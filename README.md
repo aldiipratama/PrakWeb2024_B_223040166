@@ -11,7 +11,7 @@
 >
 > Lanjut ke <br/>
 >
-> Laravel 8 #12 - selesai : https://www.youtube.com/watch?v=HqAMb6kqlLs&list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2&pp=iAQB <br/>
+> Laravel 8 #14 - selesai : https://www.youtube.com/watch?v=HqAMb6kqlLs&list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2&pp=iAQB <br/>
 
 > [!TIP]
 > Pahami, bukan menghafal: Karena memahami lebih baik daripada menghafalnya :)
