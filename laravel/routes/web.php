@@ -1,70 +1,51 @@
 <?php
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\DashboardPostController;
 
-Route::get('/', function () {
-  return view('home', ['title' => 'Home Page']);
-});
 
-Route::get('/about', function () {
-  return view('about', ['name' => 'Aldi Pratama', 'title' => 'About Page']);
-});
 
-Route::get('/posts', function () {
-  return view('posts', ['title' => 'Posts Page', 'posts' => [
-    [
-      'id' => 1,
-      'slug' => 'judul-artikel-1',
-      'title' => 'Judul Artikel 1',
-      'author' => 'Aldi Pratama',
-      'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti veniam et quam!
-            Commodi voluptatem esse
-            aperiam, accusantium iusto iste. Vel ut rem eius quis accusamus voluptates blanditiis, eligendi enim
-            nesciunt?'
-    ],
-    [
-      'id' => 2,
-      'slug' => 'judul-artikel-2',
-      'title' => 'Judul Artikel 2',
-      'author' => 'Aldi Pratama',
-      'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur, nam dolore!
-            Repellat perspiciatis eveniet quae eaque deleniti, voluptatibus distinctio dolor minus totam, aut corporis
-            recusandae eum non, pariatur similique voluptate.'
-    ],
-  ]]);
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/posts/{slug}', function ($slug) {
-  $posts = [
-    [
-      'id' => 1,
-      'slug' => 'judul-artikel-1',
-      'title' => 'Judul Artikel 1',
-      'author' => 'Aldi Pratama',
-      'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti veniam et quam!
-            Commodi voluptatem esse
-            aperiam, accusantium iusto iste. Vel ut rem eius quis accusamus voluptates blanditiis, eligendi enim
-            nesciunt?'
-    ],
-    [
-      'id' => 2,
-      'slug' => 'judul-artikel-2',
-      'title' => 'Judul Artikel 2',
-      'author' => 'Aldi Pratama',
-      'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur, nam dolore!
-            Repellat perspiciatis eveniet quae eaque deleniti, voluptatibus distinctio dolor minus totam, aut corporis
-            recusandae eum non, pariatur similique voluptate.'
-    ],
-  ];
+Route::get('/about', [AboutController::class, 'index']);
 
-  $posts = Arr::first($posts, function ($post) use ($slug) {
-    return $post['slug'] == $slug;
-  });
+Route::get('/posts', [PostController::class, 'index']);
 
-  return view('post', ['title' => 'Single Post', 'post' => $posts]);
-});
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/contact', function () {
-  return view('contact', ['title' => 'Contact Page']);
-});
+Route::get('/contact', [ContactController::class, 'index']);
+
+Route::get('/authors/{user:username}', [UserController::class, 'author']);
+
+Route::get('/categories/{category:slug}', [CategoryController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/dashboard/posts', [DashboardPostController::class, 'index'])->middleware('auth');
+
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::get('/dashboard/administrator/categories', [AdminCategoryController::class, 'index'])->middleware('auth');
+
+Route::resource('/dashboard/administrator/categories', AdminCategoryController::class)->except('show')->middleware('can:admin');
+
+Route::get('/dashboard/administrator/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');

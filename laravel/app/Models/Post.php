@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,12 +10,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-  use HasFactory;
+  use HasFactory, Sluggable;
 
   protected $fillable = [
     'title',
-    'author',
+    'author_id',
+    'category_id',
     'slug',
+    'image',
     'body'
   ];
 
@@ -43,5 +46,19 @@ class Post extends Model
       $filters['author'] ?? false,
       fn($query, $author) => $query->whereHas('author', fn($query) => $query->where('username', $author))
     );
+  }
+
+  public function getRouteKeyName()
+  {
+    return 'slug';
+  }
+
+  public function sluggable(): array
+  {
+    return [
+      'slug' => [
+        'source' => 'title',
+      ]
+    ];
   }
 }
