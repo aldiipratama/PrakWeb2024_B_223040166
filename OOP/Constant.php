@@ -3,12 +3,12 @@
 define("NAMA", "Aldi Pratama");
 echo NAMA;
 
-echo "\n";
+echo "<br/>";
 
 const UMUR = 22;
 echo UMUR;
 
-echo "\n";
+echo "<br/>";
 
 class Coba
 {
@@ -18,12 +18,12 @@ class Coba
 
 echo Coba::NAME;
 
-echo "\n";
+echo "<br/>";
 
 $obj = new Coba();
 echo $obj->kelas;
 
-echo "\n";
+echo "<br/>";
 
 function func()
 {

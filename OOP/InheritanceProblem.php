@@ -1,6 +1,6 @@
 <?php
 
-class Produk
+class ProdukInheritanceProblem
 {
   public $judul, $penulis, $penerbit, $harga, $jmlHalaman, $waktuMain, $tipe;
 
@@ -36,16 +36,16 @@ class Produk
 
 class CetakInfoProduk
 {
-  public function cetak(Produk $produk)
+  public function cetak(ProdukInheritanceProblem $produk)
   {
     $str = "{$produk->judul} | {$produk->getLabel()} (Rp. {$produk->harga})";
     return $str;
   }
 }
 
-$produk1 = new Produk("One Piece", "Oiichiro Oda", "Weekly Shonen Jump", 30000, 100, 0, "Komik");
-$produk2 = new Produk("Uncharted", "Neil Druckmann", "Sony Computer", 25000, 0, 50, "Game");
+$produk1 = new ProdukInheritanceProblem("One Piece", "Oiichiro Oda", "Weekly Shonen Jump", 30000, 100, 0, "Komik");
+$produk2 = new ProdukInheritanceProblem("Uncharted", "Neil Druckmann", "Sony Computer", 25000, 0, 50, "Game");
 
 echo $produk1->getInfoLengkap();
-echo "\n";
+echo "<br/>";
 echo $produk2->getInfoLengkap();

@@ -5,7 +5,7 @@ interface InfoProduk
   public function getInfoProduk();
 }
 
-abstract class Produk
+abstract class ProdukInterface
 {
   protected $judul, $penulis, $penerbit, $harga, $diskon = 0;
 
@@ -75,7 +75,7 @@ abstract class Produk
   abstract public function getInfo();
 }
 
-class Komik extends Produk implements InfoProduk
+class Komik extends ProdukInterface implements InfoProduk
 {
   public $jmlHalaman;
 
@@ -99,7 +99,7 @@ class Komik extends Produk implements InfoProduk
   }
 }
 
-class Game extends Produk implements InfoProduk
+class Game extends ProdukInterface implements InfoProduk
 {
   public $waktuMain;
 
@@ -127,17 +127,17 @@ class CetakInfoProduk
 {
   public $daftarProduk = [];
 
-  public function tambahProduk(Produk $produk)
+  public function tambahProduk(ProdukInterface $produk)
   {
     $this->daftarProduk[] = $produk;
   }
 
   public function cetak()
   {
-    $str = "DAFTAR PRODUK : \n";
+    $str = "DAFTAR PRODUK : <br/>";
 
     foreach ($this->daftarProduk as $p) {
-      $str .= "- {$p->getInfoProduk()}\n";
+      $str .= "- {$p->getInfoProduk()}<br/>";
     }
 
     return $str;

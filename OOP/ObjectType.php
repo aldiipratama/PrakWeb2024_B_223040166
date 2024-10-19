@@ -31,8 +31,8 @@ $produk1 = new ProdukObjectType("One Piece", "Oiichiro Oda", "Weekly Shonen Jump
 $produk2 = new ProdukObjectType("Uncharted", "Neil Druckmann", "Sony Computer", 25000);
 
 echo "Komik : " . $produk1->getLabel();
-echo "\n";
+echo "<br/>";
 echo "Game : " . $produk2->getLabel();
-echo "\n";
+echo "<br/>";
 $infoProduk1 = new CetakInfoProduk();
 echo $infoProduk1->cetak($produk1);

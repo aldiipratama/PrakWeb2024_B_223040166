@@ -11,11 +11,11 @@ class ContohStatic
 }
 
 echo ContohStatic::$angka;
-echo "\n";
+echo "<br/>";
 echo ContohStatic::halo();
-echo "\n\n";
+echo "<br/><br/>";
 echo ContohStatic::halo();
-echo "\n\n";
+echo "<br/><br/>";
 
 class Contoh
 {
@@ -23,7 +23,7 @@ class Contoh
 
   public function halo()
   {
-    return "Halo " . self::$angka++ . " kali.\n";
+    return "Halo " . self::$angka++ . " kali.<br/>";
   }
 }
 
@@ -32,7 +32,7 @@ $obj = new Contoh;
 echo $obj->halo();
 echo $obj->halo();
 echo $obj->halo();
-echo "\n";
+echo "<br/>";
 
 $obj2 = new Contoh;
 echo $obj2->halo();

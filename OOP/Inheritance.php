@@ -1,6 +1,6 @@
 <?php
 
-class Produk
+class ProdukInheritance
 {
   public $judul, $penulis, $penerbit, $harga, $jmlHalaman, $waktuMain;
 
@@ -27,7 +27,7 @@ class Produk
   }
 }
 
-class Komik extends Produk
+class KomikInheritance extends ProdukInheritance
 {
   // public $jmlHalaman;
   public function getInfoProduk()
@@ -37,7 +37,7 @@ class Komik extends Produk
   }
 }
 
-class Game extends Produk
+class GameInheritance extends ProdukInheritance
 {
   // public $jmlHalaman;
   public function getInfoProduk()
@@ -56,9 +56,9 @@ class CetakInfoProduk
   }
 }
 
-$produk1 = new Komik("One Piece", "Oiichiro Oda", "Weekly Shonen Jump", 30000, 100, 0);
-$produk2 = new Game("Uncharted", "Neil Druckmann", "Sony Computer", 25000, 0, 50);
+$produk1 = new KomikInheritance("One Piece", "Oiichiro Oda", "Weekly Shonen Jump", 30000, 100, 0);
+$produk2 = new GameInheritance("Uncharted", "Neil Druckmann", "Sony Computer", 25000, 0, 50);
 
 echo $produk1->getInfoProduk();
-echo "\n";
+echo "<br/>";
 echo $produk2->getInfoProduk();

@@ -16,9 +16,11 @@ class DashboardPostController extends Controller
    */
   public function index()
   {
+    // return view('posts', ['title' => 'All Posts' . $title, 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(6)->withQueryString()]);
 
     return view("dashboard.posts.index", [
-      'posts' => Post::where('author_id', Auth::user()->id)->latest()->get()
+      'title' => "My Post",
+      'posts' => Post::where('author_id', Auth::user()->id)->filter(request(['search']))->latest()->get()
     ]);
   }
 

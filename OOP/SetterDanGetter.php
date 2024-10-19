@@ -1,8 +1,8 @@
 <?php
 
-class Produk
+class ProdukSetterDanGetter
 {
-  private $judul, $penulis, $penerbit, $harga, $diskon = 0;
+  public $judul, $penulis, $penerbit, $harga, $diskon = 0;
 
   public function __construct($judul = "Judul", $penulis = "Penulis", $penerbit = "Penerbit", $harga = 0)
   {
@@ -75,7 +75,7 @@ class Produk
   }
 }
 
-class Komik extends Produk
+class Komik extends ProdukSetterDanGetter
 {
   public $jmlHalaman;
 
@@ -92,7 +92,7 @@ class Komik extends Produk
   }
 }
 
-class Game extends Produk
+class Game extends ProdukSetterDanGetter
 {
   public $waktuMain;
 
@@ -111,7 +111,7 @@ class Game extends Produk
 
 class CetakInfoProduk
 {
-  public function cetak(Produk $produk)
+  public function cetak(ProdukSetterDanGetter $produk)
   {
     $str = "{$produk->judul} | {$produk->getLabel()} (Rp. {$produk->harga})";
     return $str;
@@ -122,13 +122,13 @@ $produk1 = new Komik("One Piece", "Oiichiro Oda", "Weekly Shonen Jump", 30000, 1
 $produk2 = new Game("Uncharted", "Neil Druckmann", "Sony Computer", 25000, 50);
 
 echo $produk1->getInfoProduk();
-echo "\n";
+echo "<br/>";
 echo $produk2->getInfoProduk();
-echo "\n\n";
+echo "<br/><br/>";
 
 $produk2->setDiskon(50);
 echo $produk2->getHarga();
-echo "\n\n";
+echo "<br/><br/>";
 
 echo $produk1->setJudul("OP");
 echo $produk1->getJudul();

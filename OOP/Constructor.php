@@ -23,7 +23,7 @@ $produk2 = new ProdukConstructor("Uncharted", "Neil Druckmann", "Sony Computer",
 $produk3 = new ProdukConstructor("Naruto");
 
 echo "Komik : " . $produk1->getLabel();
-echo "\n";
+echo "<br/>";
 echo "Game : " . $produk2->getLabel();
-echo "\n";
+echo "<br/>";
 var_dump($produk3);

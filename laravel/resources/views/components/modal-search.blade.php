@@ -34,7 +34,7 @@
                     <label for="modal-search" class="sr-only">Search</label>
                     <input id="modal-search"
                         class="w-full py-3 pl-10 pr-4 placeholder-gray-400 bg-white border-0 appearance-none dark:text-gray-300 dark:bg-gray-800 focus:ring-transparent dark:placeholder-gray-500"
-                        type="search" placeholder="Search Anything…" x-ref="searchInput" />
+                        type="search" placeholder="Search Your Article…" name="search" x-ref="searchInput" />
                     <button class="absolute inset-0 right-auto group" type="submit" aria-label="Search">
                         <svg class="ml-4 mr-2 text-gray-400 fill-current shrink-0 dark:text-gray-500 group-hover:text-gray-500 dark:group-hover:text-gray-400"
                             width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">

@@ -1,6 +1,6 @@
 <?php
 
-class Produk
+class ProdukOverriding
 {
   public $judul, $penulis, $penerbit, $harga;
 
@@ -25,7 +25,7 @@ class Produk
   }
 }
 
-class Komik extends Produk
+class Komik extends ProdukOverriding
 {
   public $jmlHalaman;
 
@@ -42,7 +42,7 @@ class Komik extends Produk
   }
 }
 
-class Game extends Produk
+class Game extends ProdukOverriding
 {
   public $waktuMain;
 
@@ -60,7 +60,7 @@ class Game extends Produk
 
 class CetakInfoProduk
 {
-  public function cetak(Produk $produk)
+  public function cetak(ProdukOverriding $produk)
   {
     $str = "{$produk->judul} | {$produk->getLabel()} (Rp. {$produk->harga})";
     return $str;
@@ -71,5 +71,5 @@ $produk1 = new Komik("One Piece", "Oiichiro Oda", "Weekly Shonen Jump", 30000, 1
 $produk2 = new Game("Uncharted", "Neil Druckmann", "Sony Computer", 25000, 50);
 
 echo $produk1->getInfoProduk();
-echo "\n";
+echo "<br/>";
 echo $produk2->getInfoProduk();

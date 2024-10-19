@@ -34,5 +34,5 @@ $produk4->penerbit = "Sony Computer";
 $produk4->harga = 25000;
 
 echo "Komik : " . $produk3->getLabel();
-echo "\n";
+echo "<br/>";
 echo "Game : " . $produk4->getLabel();

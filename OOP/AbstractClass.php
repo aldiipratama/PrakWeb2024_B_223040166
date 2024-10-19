@@ -123,10 +123,10 @@ class CetakInfoProduk
 
   public function cetak()
   {
-    $str = "DAFTAR PRODUK : \n";
+    $str = "DAFTAR PRODUK : <br/>";
 
     foreach ($this->daftarProduk as $p) {
-      $str .= "- {$p->getInfoProduk()}\n";
+      $str .= "- {$p->getInfoProduk()}<br/>";
     }
 
     return $str;

@@ -27,12 +27,6 @@
                 @endif
             </li>
             <li>
-                <a href="/dashboard/profile/setting"
-                    class="flex items-center px-3 py-1 text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400">
-                    Setting
-                </a>
-            </li>
-            <li>
                 <form method="POST" action="/logout" x-data>
                     @csrf
 
